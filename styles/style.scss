@@ -1,0 +1,103 @@
+$widthSquare: 120px;
+$dark: #303846;
+@mixin container {
+    max-width: 1140px;
+    width: 100%;
+    margin: 0 auto;
+}
+@mixin center {
+    width:$widthSquare * 8 + 100px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items:center;
+    overflow: auto;
+}
+.container{
+    @include container;
+}
+
+
+.board{
+    margin-top: 100px;
+    width:$widthSquare * 8 + 100px;
+    @include center;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.square{
+    border: 1px solid purple;
+    min-width: 120px;
+    min-height: 120px;
+    &__white{
+        background-color:aqua
+    }
+    &__black{
+        background-color:black
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .square-row{
+//     @include center;
+//     padding: 0;
+//     margin: 0;
+//     &__numbers{
+//         @include center
+//     } 
+// }
+
+
+// .square{
+//     border: 1px solid purple;
+//     min-width: 120px;
+//     min-height: 120px;
+//     &__number{
+//         background-color: white
+//     }
+// }
+
+// .black {
+//     background-color: black;
+// }
+
+// .white {
+//     background-color:aqua;
+// }   -- первая версия
