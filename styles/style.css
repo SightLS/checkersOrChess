@@ -7,7 +7,6 @@
 .board {
   margin-top: 100px;
   width: 1060px;
-  width: 1060px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20,13 +19,23 @@
       -ms-flex-align: center;
           align-items: center;
   overflow: auto;
-  display: flex;
-  align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
 
 .square {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: auto;
   border: 1px solid purple;
   min-width: 120px;
   min-height: 120px;
@@ -38,5 +47,10 @@
 
 .square__black {
   background-color: black;
+}
+
+.checker {
+  max-width: 100px;
+  max-height: 100px;
 }
 /*# sourceMappingURL=style.css.map */
