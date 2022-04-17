@@ -170,16 +170,16 @@ const dragndrop = () => {
 
     checkers.forEach((element) => {
         // console.log(element);
-        // const checkerStr = `$element}`;
+        // const checkerStr = element;
         // // console.log(checkerStr);
         element.addEventListener('dragstart', dragstart);
         element.addEventListener('dragend', dragend);
         
     });
 
-    for (let i = 0; i < checkers.length; i++) {
-        
-        
+    const test = document.querySelector('checker');
+    console.log(test);
+
 
     const dragover = function(event) {
         event.preventDefault();

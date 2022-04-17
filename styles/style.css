@@ -36,7 +36,7 @@
       -ms-flex-align: center;
           align-items: center;
   overflow: auto;
-  border: 1px solid purple;
+  border: 1px solid yellow;
   min-width: 120px;
   min-height: 120px;
 }
@@ -52,5 +52,13 @@
 .checker {
   max-width: 100px;
   max-height: 100px;
+}
+
+.hide {
+  display: none;
+}
+
+.hovered {
+  background-color: green;
 }
 /*# sourceMappingURL=style.css.map */

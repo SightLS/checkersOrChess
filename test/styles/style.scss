@@ -25,7 +25,7 @@ $widthSquare: 120px;
 
 .square{
     @include center;
-    border: 1px solid yellow;
+    border: 1px solid purple;
     min-width: 120px;
     min-height: 120px;
     &__white{
@@ -43,17 +43,40 @@ $widthSquare: 120px;
     max-height: 100px;
 }
 
-.hide {
+
+.test-pos{
+    border: 2px solid red;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+footer{display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+}
+
+.test-old-pos{
+    border: 2px solid red;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.hide{
     display: none;
-  }
-  
-  .hovered {
-    background-color: green;
-  }
+}
 
-
-
-
+.hovered{
+    background-color: grey;
+}
 
 
 
