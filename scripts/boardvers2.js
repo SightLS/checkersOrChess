@@ -4,10 +4,6 @@
 const loadBoard = function () {
     
     const board = document.querySelector('.board');
-
-    const squareWhite = `<div class = "square square__white" id =""></div>`,
-        squareBlack = `<div class = "square square__black" id =""></div>`;
-
     const boardDisplay = [];
 
     for (let i = 0; i < 8; i++) {
@@ -112,7 +108,10 @@ const createCheres = function () {
             square[i].classList.contains('square__black')  === true;
     
         const checkSquareCRow =  square[i].classList.contains('c-row') === true && 
-            square[i].classList.contains('square__black')  === true; // проверка ряда "с" с черными квадратами
+            square[i].classList.contains('square__black')  === true; 
+
+
+            // проверка ряда с черными квадратами
     
             if (checkSquareARow || checkSquareBRow || checkSquareCRow) {
                 square[i].insertAdjacentHTML("beforeend", checkerWhite);
@@ -128,7 +127,9 @@ const createCheres = function () {
             square[i].classList.contains('square__black')  === true;
     
         const checkSquareFRow =  square[i].classList.contains('f-row') === true && 
-            square[i].classList.contains('square__black')  === true; // проверка ряда "с" с черными квадратами
+            square[i].classList.contains('square__black')  === true; 
+            
+            // проверка ряда с черными квадратами
     
             if (checkSquareHRow || checkSquareGRow || checkSquareFRow) {
                 square[i].insertAdjacentHTML("beforeend", checkerBlack);
@@ -147,21 +148,20 @@ createCheres();
 // передвижение объектов
 // изучаю событие drug and drop чтобы передвигать объекты
 
+//думаю драгНдроп подключить для черных и белых шашек по отделбности, чтоб когда белые походили функция выключаласи
+// и включалась функция у черных и наоборот
 
 
-
-const dragndrop = () => {
+const dragndropWhite = () => {
 
     const square = document.querySelectorAll('.square');
-
-    const squareWhite = document.querySelectorAll('.square__white');
-    const squareblack = document.querySelectorAll('.square__black');
-    const checkers = document.querySelectorAll('.checker');
-
+    const checkers = document.querySelectorAll('.checker__white');
+    let idStart;
     
     const dragstart = function () {
 
         setTimeout(() => {this.classList.add('hide');}, 0);
+        idStart = this.parentElement.id;
     };  // момент перетаскивания
     
     const dragend = function () {
@@ -169,16 +169,10 @@ const dragndrop = () => {
     };  
 
     checkers.forEach((element) => {
-        // console.log(element);
-        // const checkerStr = element;
-        // // console.log(checkerStr);
         element.addEventListener('dragstart', dragstart);
         element.addEventListener('dragend', dragend);
         
     });
-
-    const test = document.querySelector('checker');
-    console.log(test);
 
 
     const dragover = function(event) {
@@ -190,8 +184,18 @@ const dragndrop = () => {
     const dragleave = function() {
         this.classList.remove('hovered');
     };
+
+  
+
     const drop = function() {
-        this.append(checkers);
+
+        checkers.forEach(element => {
+            if (element.classList.contains('hide') === true &&
+            this.id.codePointAt(0) - idStart.codePointAt(0) === 1 &&
+            this.children.length == 0) {
+                this.prepend(element);
+            }
+        });
         this.classList.remove('hovered');
     };
 
@@ -199,10 +203,88 @@ const dragndrop = () => {
         element.addEventListener('dragover', dragover);
         element.addEventListener('dragenter', dragenter);
         element.addEventListener('dragleave', dragleave);
-        element.addEventListener('drop', drop);
+
+
+        if (element.classList.contains('square__black') === true) {
+            element.addEventListener('drop', drop);
+
+        }
+
+
+       
     });
     
-
 };
 
-dragndrop();
+dragndropWhite();
+
+
+const dragndropBlack = () => {
+
+    const square = document.querySelectorAll('.square');
+    const checkers = document.querySelectorAll('.checker__black');
+    let idStart;
+    
+    const dragstart = function () {
+
+        setTimeout(() => {this.classList.add('hide');}, 0);
+        idStart = this.parentElement.id;
+    };  // момент перетаскивания
+    
+    const dragend = function () {
+        setTimeout(() => {this.classList.remove('hide');}, 0);
+    };  
+
+    checkers.forEach((element) => {
+        element.addEventListener('dragstart', dragstart);
+        element.addEventListener('dragend', dragend);
+        
+    });
+
+
+    const dragover = function(event) {
+        event.preventDefault();
+    };
+    const dragenter = function() {
+        this.classList.add('hovered');
+    };
+    const dragleave = function() {
+        this.classList.remove('hovered');
+    };
+
+  
+
+    const drop = function() {
+
+        checkers.forEach(element => {
+            if (element.classList.contains('hide') === true  &&
+             this.id.codePointAt(0) - idStart.codePointAt(0) === -1 &&
+             this.children.length == 0) {
+
+                this.prepend(element);
+            }
+
+
+
+        });
+        this.classList.remove('hovered');
+    };
+
+    square.forEach(element => {
+        element.addEventListener('dragover', dragover);
+        element.addEventListener('dragenter', dragenter);
+        element.addEventListener('dragleave', dragleave);
+
+
+        if (element.classList.contains('square__black') === true) {
+            element.addEventListener('drop', drop);
+
+        }
+
+
+       
+    });
+    
+};
+
+dragndropBlack();
