@@ -9,7 +9,7 @@ $widthSquare: 120px;
     justify-content: center;
     align-content: center;
     align-items:center;
-    overflow: auto;
+    // overflow: auto;
 }
 .container{
     @include container;
@@ -21,13 +21,15 @@ $widthSquare: 120px;
     width:$widthSquare * 8 + 100px;
     @include center;
     flex-wrap: wrap;
+    
 }
 
 .square{
     @include center;
     border: 1px solid yellow;
-    min-width: 120px;
-    min-height: 120px;
+    width: 120px;
+    height: 120px;
+    position:relative;
     &__white{
         background-color:aqua
     }
